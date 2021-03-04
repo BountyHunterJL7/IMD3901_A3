@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Find the buttons</title>
+        <meta charset="utf-8" />
+        <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+        <script src=/socket.io/socket.io.js></script>
+    </head>
+
+    <body>
+        <a-scene background="color:rgb(0, 255, 0);" physics="gravity:-9.8">
+            <a-entity camera universal-controls look-controls position="0 1.6 0" kinematic-body>
+                <a-entity cursor="rayOrigin:mouse;" raycaster="far:20; interval:200; objects:.interactive"></a-entity>
+            </a-entity>
+            <a-entity light="type:ambient; castShadow:false;" position="0 1 0"></a-entity>
+
+            <a-entity class="ground" static-body geometry="primitive:plane; width:50; height:50;" material="color:white;" position="0 0.01 0" rotation="90 0 0"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:50; height:50;" material="color:rgb(0, 0, 0);" position="25 0 0" rotation="0 90 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:50; height:50;" material="color:rgb(0, 0, 0);" position="-25 0 0" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:50; height:50;" material="color:rgb(0, 0, 0);" position="0 0 -25" rotation="0 180 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:50; height:50;" material="color:rgb(0, 0, 0);" position="0 0 25" rotation="0 0 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 255, 0);" position="10 0 -13" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 255, 0);" position="15 0 3" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 255, 0);" position="10 0 -13" rotation="0 90 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="15 0 3" rotation="0 90 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="22 0 3" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 255, 0);" position="22 0 3" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 255, 0);" position="-3 0 -20" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 255, 0);" position="-3 0 -20" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="-3 0 -12" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 255, 0);" position="-3 0 -12" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 0, 255);" position="3 0 -6" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="3 0 -6" rotation="0 180 90"></a-entity>
+
+            
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 0, 255);" position="-10 0 13" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 0, 255);" position="-15 0 -3" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="-10 0 13" rotation="0 90 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 255, 0);" position="-15 0 -3" rotation="0 90 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="3 0 20" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="3 0 20" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="3 0 12" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 255, 0);" position="3 0 12" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="-3 0 6" rotation="0 0 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 255, 0);" position="-3 0 6" rotation="0 180 90"></a-entity>
+
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(0, 0, 255);" position="-10 0 20" rotation="0 270 90"></a-entity>
+            <a-entity static-body geometry="primitive:plane; width:20; height:14;" material="color:rgb(255, 0, 0);" position="-10 0 20" rotation="0 90 90"></a-entity>
+
+
+            
+
+
+
+            <!-- red button -->
+            <a-entity id="red_button_score" position="20 0.0 5">
+                <a-entity class="button interactive" position="0 0.6 0" geometry="primitive:cylinder; radius:0.15; height:0.2;" material="color:rgb(255, 0, 0)"></a-entity>
+            </a-entity>
+
+            <!-- blue button -->
+            <a-entity id="blue_button_score" position="-11 0.0 20">
+                <a-entity class="button interactive" position="0 0.6 0" geometry="primitive:cylinder; radius:0.15; height:0.2;" material="color:rgb(0, 0, 255)"></a-entity>
+            </a-entity>
+                        <!-- green button -->
+                        <a-entity id="green_button_score" position="16 0.0 -2">
+                            <a-entity class="button interactive" position="0 0.6 0" geometry="primitive:cylinder; radius:0.15; height:0.2;" material="color:rgb(0, 255, 0)"></a-entity>
+                        </a-entity>
+            
+                        <!-- yellow button -->
+                        <a-entity id="yellow_button_score" position="-7 0.0 -14">
+                            <a-entity class="button interactive" position="0 0.6 0" geometry="primitive:cylinder; radius:0.15; height:0.2;" material="color:rgb(255, 255, 0)"></a-entity>
+                        </a-entity>
+                    </a-scene>
+        </a-scene>
+
+        <script>
+            let socket = io();
+
+                socket.on('connect', (data) =>{
+                    socket.emit(socket.id + " has joined the hunt");
+                    var redPush = false;
+                    var bluePush = false;
+                    var greenPush = false;
+                    var yellowPush = false;
+
+                    document.querySelector('#red_button_score').querySelector('.button').addEventListener('click', function(){
+                        socket.emit('red');
+                        redPush = true;
+                        if (redPush == true && bluePush == true && greenPush == true && yellowPush == true) {
+                        console.log(socket.id + " has found all the buttons!")
+                        socket.emit(socket.id + " has found all the buttons!");
+                        socket.emit('win');
+                        redPush = false;
+                        bluePush = false;
+                        greenPush = false;
+                        yellowPush = false;
+                    }
+                    });
+
+                    document.querySelector('#blue_button_score').querySelector('.button').addEventListener('click', function(){
+                        socket.emit('blue');
+                        bluePush = true;
+                        if (redPush == true && bluePush == true && greenPush == true && yellowPush == true) {
+                        console.log(socket.id + " has found all the buttons!")
+                        socket.emit(socket.id + " has found all the buttons!");
+                        socket.emit('win');
+                        redPush = false;
+                        bluePush = false;
+                        greenPush = false;
+                        yellowPush = false;
+                    }
+                    });
+                    document.querySelector('#green_button_score').querySelector('.button').addEventListener('click', function(){
+                        socket.emit('green');
+                        greenPush = true;
+                        if (redPush == true && bluePush == true && greenPush == true && yellowPush == true) {
+                        console.log(socket.id + " has found all the buttons!")
+                        socket.emit(socket.id + " has found all the buttons!");
+                        socket.emit('win');
+                        redPush = false;
+                        bluePush = false;
+                        greenPush = false;
+                        yellowPush = false;
+                    }
+                    });
+
+                    document.querySelector('#yellow_button_score').querySelector('.button').addEventListener('click', function(){
+                        socket.emit('yellow');
+                        yellowPush = true;
+                        if (redPush == true && bluePush == true && greenPush == true && yellowPush == true) {
+                        console.log(socket.id + " has found all the buttons!")
+                        socket.emit(socket.id + " has found all the buttons!");
+                        socket.emit('win');
+                        redPush = false;
+                        bluePush = false;
+                        greenPush = false;
+                        yellowPush = false;
+                    }
+                    });
+                    socket.on('color_change', (data) =>{
+                    let colorStr = 'rgb('+ data.r +','+ data.g + ',' + data.b +')';
+                    document.querySelector('a-scene').setAttribute('background', {color:colorStr});
+
+                    console.log('color_change: ' + colorStr);
+                });
+            });
+        </script>
+    </body>
+</html>
